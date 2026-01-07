@@ -40,6 +40,7 @@ button{
   position:fixed;
   inset:0;
   pointer-events:none;
+  z-index:999;
 }
 
 .pop{
@@ -72,7 +73,12 @@ button{
 </div>
 
 <script>
-const sections = {
+document.addEventListener("DOMContentLoaded", () => {
+
+  const content = document.getElementById("content");
+  const popBox = document.getElementById("pop");
+
+  const sections = {
 profile: `HOW I UNDERSTAND YOU
 
 I want to tell you how I see you, not the version you perform, but the one you live as.
@@ -220,26 +226,30 @@ Not because he demanded attention, but because his presence changed the air arou
 That was enough to make him unforgettable.`❤️❤️❤️❤️❤️
 };
 
-function show(key){
-  document.getElementById("content").textContent = sections[key];
-}
 
-/* slow random emoji pops */
-const icons=["❤️"];
-setInterval(()=>{
-  const e=document.createElement("span");
-  e.className="pop";
-  e.textContent=icons[Math.floor(Math.random()*icons.length)];
-  e.style.left=Math.random()*100+"vw";
-  e.style.top=Math.random()*100+"vh";
-  e.style.fontSize=14+Math.random()*18+"px";
-  document.getElementById("pop").appendChild(e);
-  setTimeout(()=>e.remove(),4000);
-},2500);
+  window.show = function(key) {
+    content.innerHTML = sections[key];
+  };
+
+  const icons = ["❤️"];
+
+  setInterval(() => {
+    const e = document.createElement("span");
+    e.className = "pop";
+    e.textContent = icons[Math.floor(Math.random()*icons.length)];
+    e.style.left = Math.random()*100 + "vw";
+    e.style.top = Math.random()*100 + "vh";
+    e.style.fontSize = 14 + Math.random()*18 + "px";
+    popBox.appendChild(e);
+    setTimeout(() => e.remove(), 4000);
+  }, 2500);
+
+});
 </script>
 
 </body>
 </html>
+
 
 
 
