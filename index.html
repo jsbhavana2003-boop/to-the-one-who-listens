@@ -7,34 +7,58 @@
 </head>
 
 <body>
+
+  <!-- ❤️ HEARTS CONTAINER (MUST BE FIRST INSIDE BODY) -->
+  <div id="heart-container"></div>
+
+  <!-- 🌸 YOUR EXISTING CONTENT -->
   <div class="container">
-    <h1>For My Listener</h1>
-    <p class="subtitle">To The One I Love The Most</p>
+    <h1>For My Only Listener</h1>
+    <p class="subtitle">To The Person I Love The Most</p>
 
-    <button onclick="openSection('profile')">🧠 How I Understand You</button>
-    <button onclick="openSection('birthday')">🎂 Birthday</button>
-    <button onclick="openSection('capsule')">⏳ Time Capsule</button>
-    <button onclick="openSection('story')">🎭 Character Study</button>
-
-    <div id="content"></div>
+    <button onclick="go('birthday.html')">🎂 Birthday</button>
+    <button onclick="go('profile.html')">🧠 How I See You</button>
+    <button onclick="go('capsule.html')">⏳ Time Capsule</button>
+    <button onclick="go('story.html')">🎭 Character Study</button>
   </div>
 
-  <script src="script.js"></script>
-  <div class="hearts"></div>
+  <!-- ❤️ HEART SCRIPT (MUST BE AT BOTTOM) -->
   <script>
-  const heartsContainer = document.querySelector(".hearts");
+    const container = document.getElementById("heart-container");
 
-  for (let i = 0; i < 10; i++) {
-    const heart = document.createElement("span");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDelay = Math.random() * 5 + "s";
-    heart.style.fontSize = 20 + Math.random() * 20 + "px";
-    heartsContainer.appendChild(heart);
-  }
-</script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = Math.random() * 100 + "vh";
+      heart.style.fontSize = 18 + Math.random() * 20 + "px";
+
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 2500);
+    }
+
+    setInterval(createHeart, 900);
+  </script>
+
+  <!-- 🔗 PAGE TRANSITION SCRIPT -->
+  <script>
+    function go(page) {
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = page;
+      }, 500);
+    }
+  </script>
+
 </body>
+  }
 </html>
+
 
 
 
