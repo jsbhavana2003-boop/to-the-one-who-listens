@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Only Listener</title>
+<title>For One Listener Only</title>
 
 <style>
 body{
@@ -40,7 +40,6 @@ button{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:999;
 }
 
 .pop{
@@ -62,24 +61,20 @@ button{
 <div id="pop"></div>
 
 <div class="container">
-  <h1>For My Only Listener😘❤️</h1>
+  <h1>For My only Listener</h1>
 
-  <button onclick="show('profile')">How I Ardhamcheskunify You</button>
+  <button onclick="show('profile')">How I See You</button>
   <button onclick="show('birthday')">22</button>
-  <button onclick="show('capsule')">Capsule Of Hug</button>
-  <button onclick="show('story')">The Secret Many Don't Study</button>
+  <button onclick="show('capsule')">Capsule</button>
+  <button onclick="show('story')">Part Of You</button>
 
   <div id="content"></div>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const content = document.getElementById("content");
-  const popBox = document.getElementById("pop");
-
-  const sections = {
+const sections = {
 profile: `HOW I UNDERSTAND YOU
+
 
 I want to tell you how I see you, not the version you perform, but the one you live as.
 
@@ -122,134 +117,32 @@ I don’t see you as someone who needs fixing or improving.
 I see you as someone who needs to be understood, and valued as is.
 
 This is how I see you.
-I assume you see yourself here too.❤️❤️❤️❤️❤️❤️❤️❤️❤️`,
+I assume you see yourself here too.`,
 
-birthday: `HAPPY BIRTHDAY❤️
+birthday: `PASTE BIRTHDAY MESSAGE HERE`,
 
-I’ve been thinking about how to say this in a way that feels true and not overdone, and I realized the simplest way is probably the most honest.
+capsule: `PASTE CAPSULE MESSAGE HERE`,
 
-I’m really grateful you were born.
-Not just because you exist in my life, but because of how you exist.
-
-The way you think.
-The way you notice things.
-The way you care quietly, without needing credit.
-
-You make the world feel a little steadier to me.
-
-I hope today you feel appreciated in ways that don’t require you to perform or be anything extra.
-You don’t need to impress anyone today.
-You don’t need to carry anything.
-You’re allowed to just be and be celebrated for that.
-
-I hope this year is gentle with you.
-I hope it brings you clarity where you’ve felt uncertain, and peace where you’ve been carrying too much in your head.
-
-I hope you grow not because you’re lacking, but because you’re curious and capable.
-
-You deserve good things.
-Not someday.
-Not after you “figure everything out.”
-But now.
-Exactly as you are.
-
-I want you to know that knowing you has been a gift for me.
-There are small moments in my days that are better simply because you exist somewhere in the world thinking, building, becoming.
-
-So today, I’m celebrating you.
-Your mind.
-Your heart.
-Your presence.
-
-Happy Birthday, love.❤️
-I’m really glad this year also of your life includes me, and I hope you feel how special you are not just today, but every time you come back to this.`,
-
-capsule: `DO NOT READ TODAY
-
-This message is not for your birthday.
-
-It’s for a day when things feel heavier than usual.
-Open this when you’re tired of being the strong one.
-When you’re questioning yourself.
-When things aren’t moving as fast as you hoped they would.
-
-I want you to remember something very specific.
-
-There is a version of you that I know deeply  the one that exists when you’re not trying, not proving, not holding it together for anyone.
-That version of you is enough.
-
-You don’t have to be more accomplished, more confident, more certain to deserve care or love.
-You don’t have to “get there” first.
-
-You already matter right where you are.
-
-I know the weight you carry quietly.
-I know how much thought you put into things you never get credit for.
-I know how hard you try, even when you pretend you’re not trying at all.
-
-And if you ever forget that, let this message remind you:
-
-Someone sees you clearly.
-Someone believes in you without conditions.
-Someone is proud of you not for what you achieve, but for who you are.
-
-Come back to this when you need it.`❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️,
-
-story: `A  STUDY
-
-He wasn’t the kind of person who needed to fill every silence.
-He understood that some things were better left unspoken.
-
-He moved through life with a quiet awareness, noticing shifts in tone, in rooms, in people.
-He remembered details others forgot(my latest realization).
-He carried responsibility like second nature.
-
-Not because he was asked to.
-Because he cared.
-
-He had a steady way of being  not flashy, not dramatic.
-The kind of steadiness that only shows its value when things start to fall apart.
-
-People underestimated him often.
-They mistook his calm for simplicity, his restraint for distance.
-
-They didn’t see the thought behind his choices.
-The effort behind his patience.
-The strength it took to stay kind in a world that rewards noise.
-
-He stayed when leaving would’ve been easier.
-He listened when speaking would’ve been safer.
-
-And somewhere along the way, one person noticed.
-Not because he demanded attention, but because his presence changed the air around her.
-
-That was enough to make him unforgettable.`❤️❤️❤️❤️❤️
+story: `PASTE STORY HERE`
 };
 
+function show(key){
+  document.getElementById("content").textContent = sections[key];
+}
 
-  window.show = function(key) {
-    content.innerHTML = sections[key];
-  };
-
-  const icons = ["❤️"];
-
-  setInterval(() => {
-    const e = document.createElement("span");
-    e.className = "pop";
-    e.textContent = icons[Math.floor(Math.random()*icons.length)];
-    e.style.left = Math.random()*100 + "vw";
-    e.style.top = Math.random()*100 + "vh";
-    e.style.fontSize = 14 + Math.random()*18 + "px";
-    popBox.appendChild(e);
-    setTimeout(() => e.remove(), 4000);
-  }, 2500);
-
-});
+/* slow random emoji pops */
+const icons=["❤️","🌸","💋"];
+setInterval(()=>{
+  const e=document.createElement("span");
+  e.className="pop";
+  e.textContent=icons[Math.floor(Math.random()*icons.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.top=Math.random()*100+"vh";
+  e.style.fontSize=14+Math.random()*18+"px";
+  document.getElementById("pop").appendChild(e);
+  setTimeout(()=>e.remove(),4000);
+},2500);
 </script>
 
 </body>
 </html>
-
-
-
-
