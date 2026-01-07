@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For One Listener Only</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+  <h1>For One Listener Only</h1>
+  <p class="subtitle">Built for exactly one person.</p>
+
+  <button onclick="openSection('podcast')">🎙 How I See You</button>
+  <button onclick="openSection('profile')">🧠 22</button>
+  <button onclick="openSection('capsule')">⏳ Time Capsule</button>
+  <button onclick="openSection('story')">🎭 Character Study</button>
+
+  <div id="content"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

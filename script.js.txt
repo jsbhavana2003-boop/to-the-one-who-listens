@@ -1,0 +1,164 @@
+const sections = {
+
+  profile: `
+HOW I UNDERSTAND YOU
+Subtitle: Observations, not assumptions
+
+I want to tell you how I see you, not the version you perform, but the one you live as.
+
+At your core, you are someone who values consistency, loyalty, growth, peace, and honesty.
+You don’t chase attention.
+You chase meaning.
+
+You’re not driven by noise or validation.
+You’re driven by the need to feel grounded, like what you’re doing makes sense.
+
+What drains you most isn’t work or effort.
+It’s feeling misunderstood.
+It’s having to explain yourself when you already chose your words carefully.
+
+You get tired when people assume instead of asking.
+When they overlook the thought you put into things.
+
+What makes you feel safe is simplicity.
+Clear intentions.
+Knowing where you stand with someone.
+
+You relax when you don’t have to perform or prove anything, when you’re allowed to just exist.
+
+You don’t love loudly.
+You love reliably.
+
+You show love by being present, by staying.
+You don’t always say everything you feel, but when you commit, it’s not shallow.
+
+One thing you underestimate about yourself is how grounding you are to others.
+You think it’s “nothing” when you listen, when you stay calm, when you don’t overreact.
+
+It’s not nothing.
+It’s rare.
+
+You carry responsibility naturally, not because you want praise, but because leaving things undone feels wrong to you.
+
+And I need you to know this:
+I don’t see you as someone who needs fixing or improving.
+I see you as someone who needs to be understood, and valued as is.
+
+This is how I see you.
+I hope one day you see yourself here too.
+
+Happy Birthday.
+`,
+
+  birthday: `
+HAPPY BIRTHDAY
+
+I’ve been thinking about how to say this in a way that feels true and not overdone, and I realized the simplest way is probably the most honest.
+
+I’m really grateful you were born.
+Not just because you exist in my life, but because of how you exist.
+
+The way you think.
+The way you notice things.
+The way you care quietly, without needing credit.
+
+You make the world feel a little steadier to me.
+
+I hope today you feel appreciated in ways that don’t require you to perform or be anything extra.
+You don’t need to impress anyone today.
+You don’t need to carry anything.
+You’re allowed to just be — and be celebrated for that.
+
+I hope this year is gentle with you.
+I hope it brings you clarity where you’ve felt uncertain, and peace where you’ve been carrying too much in your head.
+
+I hope you grow not because you’re lacking, but because you’re curious and capable.
+
+You deserve good things.
+Not someday.
+Not after you “figure everything out.”
+But now.
+Exactly as you are.
+
+I want you to know that knowing you has been a gift for me.
+There are small moments in my days that are better simply because you exist somewhere in the world — thinking, building, becoming.
+
+So today, I’m celebrating you.
+Your mind.
+Your heart.
+Your presence.
+
+Happy Birthday, love.
+I’m really glad this year of your life includes me, and I hope you feel how special you are — not just today, but every time you come back to this.
+`,
+
+  capsule: `
+DO NOT READ TODAY
+
+This message is not for your birthday.
+
+It’s for a day when things feel heavier than usual.
+Open this when you’re tired of being the strong one.
+When you’re questioning yourself.
+When things aren’t moving as fast as you hoped they would.
+
+I want you to remember something very specific.
+
+There is a version of you that I know deeply — the one that exists when you’re not trying, not proving, not holding it together for anyone.
+That version of you is enough.
+
+You don’t have to be more accomplished, more confident, more certain to deserve care or love.
+You don’t have to “get there” first.
+
+You already matter right where you are.
+
+I know the weight you carry quietly.
+I know how much thought you put into things you never get credit for.
+I know how hard you try, even when you pretend you’re not trying at all.
+
+And if you ever forget that, let this message remind you:
+
+Someone sees you clearly.
+Someone believes in you without conditions.
+Someone is proud of you — not for what you achieve, but for who you are.
+
+Come back to this when you need it.
+`,
+
+  story: `
+A CHARACTER STUDY
+
+He wasn’t the kind of person who needed to fill every silence.
+He understood that some things were better left unspoken.
+
+He moved through life with a quiet awareness, noticing shifts in tone, in rooms, in people.
+He remembered details others forgot.
+He carried responsibility like second nature.
+
+Not because he was asked to.
+Because he cared.
+
+He had a steady way of being — not flashy, not dramatic.
+The kind of steadiness that only shows its value when things start to fall apart.
+
+People underestimated him often.
+They mistook his calm for simplicity, his restraint for distance.
+
+They didn’t see the thought behind his choices.
+The effort behind his patience.
+The strength it took to stay kind in a world that rewards noise.
+
+He stayed when leaving would’ve been easier.
+He listened when speaking would’ve been safer.
+
+And somewhere along the way, one person noticed.
+Not because he demanded attention, but because his presence changed the air around him.
+
+That was enough to make him unforgettable.
+`
+
+};
+
+function openSection(key) {
+  document.getElementById("content").textContent = sections[key];
+}
