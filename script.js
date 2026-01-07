@@ -89,7 +89,7 @@ Your heart.
 Your presence.
 
 Happy Birthday, love.
-I’m really glad this year of your life includes me, and I hope you feel how special you are — not just today, but every time you come back to this.
+I’m really glad this year of your life includes me, and I hope you feel how special you are not just today, but every time you come back to this.
 `,
 
   capsule: `
@@ -104,7 +104,7 @@ When things aren’t moving as fast as you hoped they would.
 
 I want you to remember something very specific.
 
-There is a version of you that I know deeply — the one that exists when you’re not trying, not proving, not holding it together for anyone.
+There is a version of you that I know deeply  the one that exists when you’re not trying, not proving, not holding it together for anyone.
 That version of you is enough.
 
 You don’t have to be more accomplished, more confident, more certain to deserve care or love.
@@ -120,7 +120,7 @@ And if you ever forget that, let this message remind you:
 
 Someone sees you clearly.
 Someone believes in you without conditions.
-Someone is proud of you — not for what you achieve, but for who you are.
+Someone is proud of you not for what you achieve, but for who you are.
 
 Come back to this when you need it.
 `,
@@ -138,7 +138,7 @@ He carried responsibility like second nature.
 Not because he was asked to.
 Because he cared.
 
-He had a steady way of being — not flashy, not dramatic.
+He had a steady way of being  not flashy, not dramatic.
 The kind of steadiness that only shows its value when things start to fall apart.
 
 People underestimated him often.
@@ -162,3 +162,4 @@ That was enough to make him unforgettable.
 function openSection(key) {
   document.getElementById("content").textContent = sections[key];
 }
+
