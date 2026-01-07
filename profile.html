@@ -9,11 +9,7 @@
 <div id="pop-container"></div>
 
 <div class="container">
-  <h1>How I Understand You</h1>
-
-  <p>
-HOW I UNDERSTAND YOU
-
+  <p>HOW I UNDERSTAND YOU
 I want to tell you how I see you, not the version you perform, but the one you live as.
 
 At your core, you are someone who values consistency, loyalty, growth, peace, and honesty.
@@ -55,28 +51,27 @@ I don’t see you as someone who needs fixing or improving.
 I see you as someone who needs to be understood, and valued as is.
 
 This is how I see you.
-I hope one day you see yourself here too.
-  </p>
-
+I hope one day you see yourself here too.</p>
   <button onclick="location.href='index.html'">← Back</button>
 </div>
 
-<!-- pop script -->
+<!-- emoji script here -->
 <script>
-  const popContainer = document.getElementById("pop-container");
+  const container = document.getElementById("pop-container");
   const icons = ["❤️", "🌸", "💋"];
-  function pop() {
-    const el = document.createElement("div");
-    el.className = "pop";
-    el.innerText = icons[Math.floor(Math.random() * icons.length)];
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.top = Math.random() * 100 + "vh";
-    el.style.fontSize = 16 + Math.random() * 20 + "px";
-    popContainer.appendChild(el);
-    setTimeout(() => el.remove(), 3000);
-  }
-  setInterval(pop, 1200);
-</script>
 
+  function pop() {
+    const e = document.createElement("span");
+    e.className = "pop";
+    e.textContent = icons[Math.floor(Math.random() * icons.length)];
+    e.style.left = Math.random() * 100 + "vw";
+    e.style.top = Math.random() * 100 + "vh";
+    e.style.fontSize = 14 + Math.random() * 18 + "px";
+    container.appendChild(e);
+    setTimeout(() => e.remove(), 4000);
+  }
+
+  setInterval(pop, 2500);
+</script>
 </body>
 </html>
