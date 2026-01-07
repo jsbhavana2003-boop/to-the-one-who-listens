@@ -15,11 +15,11 @@
   <div class="container">
     <h1>For My Only Listener</h1>
     <p class="subtitle">To The Person I Love The Most</p>
-
+<button onclick="goBack()">← Back</button>
     <button onclick="go('birthday.html')">🧠 How I Ardhamcheskunify You</button>
     <button onclick="go('profile.html')">🎂 22</button>
-    <button onclick="go('capsule.html')">⏳ Time Capsule</button>
-    <button onclick="go('story.html')">🎭 Character Study</button>
+    <button onclick="go('capsule.html')">⏳ Capsule Of Hug </button>
+    <button onclick="go('story.html')">🎭 The Secret Many Don't Study</button>
   </div>
 
   <!-- ❤️ HEART SCRIPT (MUST BE AT BOTTOM) -->
@@ -45,19 +45,26 @@
     setInterval(createHeart, 900);
   </script>
 
-  <!-- 🔗 PAGE TRANSITION SCRIPT -->
+ <script>
+  function go(page) {
+    const base = window.location.pathname.replace(/\/[^/]*$/, "/");
+    document.body.classList.add("fade-out");
+    setTimeout(() => {
+      window.location.href = base + page;
+    }, 500);
+  }
+</script>
   <script>
-    function go(page) {
-      document.body.classList.add("fade-out");
-      setTimeout(() => {
-        window.location.href = page;
-      }, 500);
-    }
-  </script>
+  function goBack() {
+    const base = window.location.pathname.replace(/\/[^/]*$/, "/");
+    window.location.href = base + "index.html";
+  }
+</script>
 
 </body>
   }
 </html>
+
 
 
 
