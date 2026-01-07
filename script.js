@@ -47,7 +47,6 @@ I see you as someone who needs to be understood, and valued as is.
 This is how I see you.
 I hope one day you see yourself here too.
 
-Happy Birthday.
 `,
 
   birthday: `
@@ -162,4 +161,5 @@ That was enough to make him unforgettable.
 function openSection(key) {
   document.getElementById("content").textContent = sections[key];
 }
+
 
