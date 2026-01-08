@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Listener</title>
 
 <style>
@@ -12,10 +13,11 @@ body{
   font-family:'Courier New', monospace;
 }
 
+/* container */
 .container{
   max-width:800px;
   margin:0 auto;
-  padding:50px 20px;
+  padding:40px 16px;
   text-align:center;
   animation:fadeIn 1.8s ease forwards;
 }
@@ -28,18 +30,22 @@ body{
 h1{
   font-weight:normal;
   letter-spacing:1px;
-  margin-bottom:30px;
+  margin-bottom:28px;
+  font-size:1.6rem;
 }
 
+/* buttons */
 button{
   background:transparent;
   color:white;
   border:1px solid #444;
-  padding:10px 16px;
+  padding:12px 18px;
   margin:6px;
   cursor:pointer;
+  font-size:0.95rem;
   transition:all .3s ease;
   animation:pulse 3s infinite;
+  border-radius:4px;
 }
 
 button:hover{
@@ -48,7 +54,7 @@ button:hover{
 }
 
 button:active{
-  transform:scale(.97);
+  transform:scale(.96);
 }
 
 @keyframes pulse{
@@ -57,16 +63,19 @@ button:active{
   100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
 }
 
+/* content */
 #content{
-  margin:40px auto 0;
-  line-height:1.8;
+  margin:36px auto 0;
+  line-height:1.7;
   white-space:pre-wrap;
   text-align:left;
   max-width:650px;
+  font-size:0.95rem;
 }
 
+/* placeholder */
 #content:empty::before{
-  content:"click to see the reflection";
+  content:"click any to see your reflection";
   opacity:.6;
   font-style:italic;
 }
@@ -89,6 +98,24 @@ button:active{
   30%{opacity:.8;transform:scale(1)}
   100%{opacity:0;transform:scale(1.1)}
 }
+
+/* ---------- MOBILE TUNING ---------- */
+@media (max-width:600px){
+  h1{
+    font-size:1.4rem;
+  }
+
+  button{
+    width:100%;
+    max-width:260px;
+    font-size:1rem;
+  }
+
+  #content{
+    font-size:0.95rem;
+    padding:0 4px;
+  }
+}
 </style>
 </head>
 
@@ -97,7 +124,7 @@ button:active{
 <div id="pop"></div>
 
 <div class="container">
-  <h1>For My only Listener</h1>
+  <h1>My only Listener❤️</h1>
 
   <button onclick="handleClick('profile')">How I See You</button>
   <button onclick="handleClick('birthday')">22</button>
@@ -257,7 +284,6 @@ Not because he demanded attention, but because his presence changed the air arou
 That was enough to make him unforgettable❤️.`
 };
 
-/* LOCK STATES */
 const locks = {
   profile:true,
   birthday:true,
@@ -265,7 +291,6 @@ const locks = {
   story:true
 };
 
-/* SECRET WORDS — you can change these */
 const secrets = {
   profile:"steady",
   birthday:"twentytwo",
