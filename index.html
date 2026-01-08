@@ -8,9 +8,21 @@
 <style>
 body{
   margin:0;
-  background:radial-gradient(circle at top, #111 0%, #000 70%);
+  background:radial-gradient(circle at top, #141418 0%, #050506 70%);
   color:white;
   font-family:'Courier New', monospace;
+  overflow-x:hidden;
+}
+
+/* soft film grain */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  opacity:0.05;
+  z-index:999;
 }
 
 /* container */
@@ -19,11 +31,11 @@ body{
   margin:0 auto;
   padding:40px 16px;
   text-align:center;
-  animation:fadeIn 1.8s ease forwards;
+  animation:fadeIn 2.6s ease forwards;
 }
 
 @keyframes fadeIn{
-  from{opacity:0; transform:translateY(10px)}
+  from{opacity:0; transform:translateY(14px)}
   to{opacity:1; transform:translateY(0)}
 }
 
@@ -32,6 +44,7 @@ h1{
   letter-spacing:1px;
   margin-bottom:28px;
   font-size:1.6rem;
+  color:#f5f5f7;
 }
 
 /* buttons */
@@ -43,10 +56,16 @@ button{
   margin:6px;
   cursor:pointer;
   font-size:0.95rem;
-  transition:all .3s ease;
-  animation:pulse 3s infinite;
+  transition:all .35s ease;
+  animation:pulse 4.5s infinite ease-in-out;
   border-radius:4px;
 }
+
+/* async pulse */
+button:nth-of-type(1){animation-delay:0s;}
+button:nth-of-type(2){animation-delay:.6s;}
+button:nth-of-type(3){animation-delay:1.2s;}
+button:nth-of-type(4){animation-delay:1.8s;}
 
 button:hover{
   border-color:#888;
@@ -58,8 +77,8 @@ button:active{
 }
 
 @keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,255,255,.12)}
-  70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,.08)}
+  60%{box-shadow:0 0 0 14px rgba(255,255,255,0)}
   100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
 }
 
@@ -71,6 +90,8 @@ button:active{
   text-align:left;
   max-width:650px;
   font-size:0.95rem;
+  transition:opacity .6s ease;
+  text-shadow:0 0 6px rgba(255,255,255,.04);
 }
 
 /* placeholder */
@@ -90,7 +111,7 @@ button:active{
 .pop{
   position:absolute;
   opacity:0;
-  animation:fadePop 4s ease forwards;
+  animation:fadePop 5.2s ease forwards;
 }
 
 @keyframes fadePop{
@@ -301,18 +322,22 @@ const secrets = {
 
 function handleClick(key){
   const content = document.getElementById("content");
+  content.style.opacity=0;
 
-  if(locks[key]){
-    const attempt = prompt("Enter the secret word");
-    if(attempt && attempt.toLowerCase() === secrets[key]){
-      locks[key] = false;
-      content.textContent = sections[key];
+  setTimeout(()=>{
+    if(locks[key]){
+      const attempt = prompt("Enter the secret word");
+      if(attempt && attempt.toLowerCase() === secrets[key]){
+        locks[key] = false;
+        content.textContent = sections[key];
+      } else {
+        content.textContent = "🔒 Not yet.";
+      }
     } else {
-      content.textContent = "🔒 Not yet.";
+      content.textContent = sections[key];
     }
-  } else {
-    content.textContent = sections[key];
-  }
+    content.style.opacity=1;
+  },300);
 }
 
 /* emoji pops */
@@ -331,7 +356,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
-
-
-
