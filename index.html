@@ -8,7 +8,7 @@
 <style>
 body{
   margin:0;
-  background:radial-gradient(circle at top, #141418 0%, #050506 70%);
+  background:radial-gradient(circle at top, #0b1c3d 0%, #050913 70%);
   color:white;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
@@ -61,7 +61,6 @@ button{
   border-radius:4px;
 }
 
-/* async pulse */
 button:nth-of-type(1){animation-delay:0s;}
 button:nth-of-type(2){animation-delay:.6s;}
 button:nth-of-type(3){animation-delay:1.2s;}
@@ -122,16 +121,12 @@ button:active{
 
 /* ---------- MOBILE TUNING ---------- */
 @media (max-width:600px){
-  h1{
-    font-size:1.4rem;
-  }
-
+  h1{font-size:1.4rem;}
   button{
     width:100%;
     max-width:260px;
     font-size:1rem;
   }
-
   #content{
     font-size:0.95rem;
     padding:0 4px;
@@ -306,18 +301,16 @@ Not because he demanded attention, but because his presence changed the air arou
 That's enough to make him unforgettable forever❤️.`
 };
 
-const locks = {
-  profile:true,
-  birthday:true,
-  capsule:true,
-  story:true
-};
+const locks = { profile:true, birthday:true, capsule:true, story:true };
+
+// light secret hardening
+function hash(s){ return btoa(s); }
 
 const secrets = {
-  profile:"steady",
-  birthday:"twentytwo",
-  capsule:"breathe",
-  story:"stay"
+  profile: hash("steady"),
+  birthday: hash("twentytwo"),
+  capsule: hash("breathe"),
+  story: hash("stay")
 };
 
 function handleClick(key){
@@ -327,7 +320,7 @@ function handleClick(key){
   setTimeout(()=>{
     if(locks[key]){
       const attempt = prompt("Enter the secret word");
-      if(attempt && attempt.toLowerCase() === secrets[key]){
+      if(attempt && hash(attempt.toLowerCase()) === secrets[key]){
         locks[key] = false;
         content.textContent = sections[key];
       } else {
@@ -356,3 +349,4 @@ setInterval(()=>{
 
 </body>
 </html>
+
