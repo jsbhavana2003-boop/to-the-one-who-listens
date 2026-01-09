@@ -9,30 +9,19 @@
 body{
   margin:0;
   background:
-    radial-gradient(circle at top, rgba(20,40,90,0.35), rgba(5,9,19,1) 70%),
-    radial-gradient(circle at bottom, rgba(255,255,255,0.04), transparent 60%);
+    radial-gradient(
+      ellipse at top,
+      #0b1c3d 0%,
+      #060b18 45%,
+      #03050c 100%
+    );
   color:white;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
 }
 
-/* soft vignette – NO LINES */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.035), transparent 55%),
-    radial-gradient(circle at top left, rgba(255,255,255,0.02), transparent 40%);
-  opacity:0.6;
-  z-index:0;
-}
-
 /* container */
 .container{
-  position:relative;
-  z-index:1;
   max-width:800px;
   margin:0 auto;
   padding:40px 16px;
@@ -72,6 +61,15 @@ button:nth-of-type(2){animation-delay:.6s;}
 button:nth-of-type(3){animation-delay:1.2s;}
 button:nth-of-type(4){animation-delay:1.8s;}
 
+button:hover{
+  border-color:#888;
+  letter-spacing:.5px;
+}
+
+button:active{
+  transform:scale(.96);
+}
+
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(255,255,255,.08)}
   60%{box-shadow:0 0 0 14px rgba(255,255,255,0)}
@@ -102,7 +100,6 @@ button:nth-of-type(4){animation-delay:1.8s;}
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:0;
 }
 
 .pop{
@@ -115,6 +112,20 @@ button:nth-of-type(4){animation-delay:1.8s;}
   0%{opacity:0;transform:scale(.3)}
   30%{opacity:.5;transform:scale(1)}
   100%{opacity:0;transform:scale(1.1)}
+}
+
+/* mobile */
+@media (max-width:600px){
+  h1{font-size:1.4rem;}
+  button{
+    width:100%;
+    max-width:260px;
+    font-size:1rem;
+  }
+  #content{
+    font-size:0.95rem;
+    padding:0 4px;
+  }
 }
 </style>
 </head>
@@ -287,9 +298,7 @@ That's enough to make him unforgettable forever❤️.`
 
 const locks = { profile:true, birthday:true, capsule:true, story:true };
 
-function norm(s){
-  return s.toLowerCase().trim();
-}
+function norm(s){ return s.toLowerCase().trim(); }
 
 const questions = {
   profile: "One word that feels like you?",
@@ -299,9 +308,9 @@ const questions = {
 };
 
 const answers = {
-  profile: ["grounded","calm","hardworking"],
+  profile: ["lovely","grounded","calm"],
   birthday: ["22","twenty two","twentytwo"],
-  capsule: ["breathe","therapy","music","silence"],
+  capsule: ["breathe","observe","music","silence"],
   story: ["stay","love","care","connection"]
 };
 
@@ -348,4 +357,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
