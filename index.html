@@ -9,35 +9,30 @@
 body{
   margin:0;
   background:
-    radial-gradient(circle at top, #0b1c3d 0%, #050913 70%),
-    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.15));
+    radial-gradient(circle at top, rgba(20,40,90,0.35), rgba(5,9,19,1) 70%),
+    radial-gradient(circle at bottom, rgba(255,255,255,0.04), transparent 60%);
   color:white;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
 }
 
-/* soft paper texture */
+/* soft vignette – NO LINES */
 body::after{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
   background:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.015) 0px,
-      rgba(255,255,255,0.015) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  opacity:0.25;
-  z-index:1;
+    radial-gradient(circle at center, rgba(255,255,255,0.035), transparent 55%),
+    radial-gradient(circle at top left, rgba(255,255,255,0.02), transparent 40%);
+  opacity:0.6;
+  z-index:0;
 }
 
 /* container */
 .container{
   position:relative;
-  z-index:2;
+  z-index:1;
   max-width:800px;
   margin:0 auto;
   padding:40px 16px;
@@ -292,20 +287,29 @@ That's enough to make him unforgettable forever❤️.`
 
 const locks = { profile:true, birthday:true, capsule:true, story:true };
 
-function hash(s){ return btoa(s.toLowerCase()); }
+function norm(s){
+  return s.toLowerCase().trim();
+}
 
 const questions = {
-  profile: "One word you think describes you best?",
-  birthday: "What age are you turning today?",
-  capsule: "When things feel heavy, what helps you breathe?",
-  story: "What makes you stay?"
+  profile: "One word that feels like you?",
+  birthday: "What age are you stepping into today?",
+  capsule: "What helps you calm down when things feel heavy?",
+  story: "Why do you stay, even when it’s hard?"
 };
 
-const secrets = {
-  profile: hash("steady"),
-  birthday: hash("twentytwo"),
-  capsule: hash("breathe"),
-  story: hash("stay")
+const answers = {
+  profile: ["grounded","calm","hardworking"],
+  birthday: ["22","twenty two","twentytwo"],
+  capsule: ["breathe","therapy","music","silence"],
+  story: ["stay","love","care","connection"]
+};
+
+const hints = {
+  profile: "It’s something you are without trying.",
+  birthday: "It’s a number, not a feeling.",
+  capsule: "Think simple. Something you do without thinking.",
+  story: "One word. The reason you don’t walk away."
 };
 
 function handleClick(key){
@@ -315,11 +319,11 @@ function handleClick(key){
   setTimeout(()=>{
     if(locks[key]){
       const attempt = prompt(questions[key]);
-      if(attempt && hash(attempt) === secrets[key]){
+      if(attempt && answers[key].includes(norm(attempt))){
         locks[key] = false;
         content.textContent = sections[key];
       } else {
-        content.textContent = "🔒 Not yet Gundu";
+        content.textContent = "🔒 Not yet.\n\nHint: " + hints[key];
       }
     } else {
       content.textContent = sections[key];
@@ -344,4 +348,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
