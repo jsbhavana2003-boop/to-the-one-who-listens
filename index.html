@@ -40,7 +40,7 @@ h1{
 .cake-wrap{
   margin:0 auto 36px;
   width:180px;
-  padding-top:36px;
+  padding-top:40px;
 }
 
 .cake-top{
@@ -81,6 +81,7 @@ h1{
   background:#000;
   transform:translateX(-50%);
   border-radius:4px;
+  z-index:5;
 }
 
 .flame{
@@ -100,10 +101,8 @@ h1{
   to{transform:translateX(-50%) scale(.85);}
 }
 
-.blown{
-  opacity:0;
-  transition:opacity .6s ease;
-}
+.hidden{opacity:0;}
+.visible{opacity:1;}
 
 /* ================= BUTTONS ================= */
 
@@ -142,12 +141,33 @@ button{
   content:"each block opens something, tap gently";
   opacity:.6;
   font-style:italic;
-  color:#7a5235;
+}
+
+/* ================= EMOJI POPS ================= */
+
+#pop{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
+.pop{
+  position:absolute;
+  opacity:0;
+  animation:fadePop 5.2s ease forwards;
+}
+
+@keyframes fadePop{
+  0%{opacity:0;transform:scale(.3)}
+  30%{opacity:.6;transform:scale(1)}
+  100%{opacity:0;transform:scale(1.1)}
 }
 </style>
 </head>
 
 <body>
+
+<div id="pop"></div>
 
 <div class="container">
   <h1>My only Listener❤️</h1>
@@ -155,7 +175,7 @@ button{
   <div class="cake-wrap">
     <div class="cake-top">
       <div class="candle">
-        <div class="flame" id="flame"></div>
+        <div class="flame visible" id="flame"></div>
       </div>
     </div>
     <div class="cake-bottom"></div>
@@ -170,12 +190,27 @@ button{
 </div>
 
 <script>
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.getElementById("flame").classList.add("blown");
-  },3000);
-});
+/* CONTINUOUS CANDLE BLOW + RELIGHT */
+setInterval(()=>{
+  const f=document.getElementById("flame");
+  f.classList.toggle("hidden");
+  f.classList.toggle("visible");
+},3000);
 
+/* EMOJI POPS RESTORED */
+const icons=["❤️","💋","🌸"];
+setInterval(()=>{
+  const e=document.createElement("span");
+  e.className="pop";
+  e.textContent=icons[Math.floor(Math.random()*icons.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.top=Math.random()*100+"vh";
+  e.style.fontSize=14+Math.random()*18+"px";
+  document.getElementById("pop").appendChild(e);
+  setTimeout(()=>e.remove(),4000);
+},2500);
+
+/* ===== YOUR ORIGINAL CONTENT (UNTOUCHED) ===== */
 const sections = {
 profile: `READING BETWEEN THE LINES
 
@@ -275,7 +310,7 @@ When things aren’t moving as fast as you hoped they would.
 
 I want you to remember something very specific.
 
-There is a version of you that I know deeply  the one that exists when you’re not trying, not proving, not holding it together for anyone.
+There is a version of you that I know deeply — the one that exists when you’re not trying, not proving, not holding it together for anyone.
 That version of you is enough.
 
 You don’t have to be more accomplished, more confident, more certain to deserve care or love.
@@ -307,7 +342,7 @@ He carried responsibility like second nature.
 Not because he was asked to.
 Because he cared.
 
-He had a steady way of being  not flashy, not dramatic.
+He had a steady way of being — not flashy, not dramatic.
 The kind of steadiness that only shows its value when things start to fall apart.
 
 People underestimated him often.
@@ -326,8 +361,47 @@ Not because he demanded attention, but because his presence changed the air arou
 That's enough to make him unforgettable forever❤️.`
 };
 
+const locks={profile:true,birthday:true,capsule:true,story:true};
+function norm(s){return s.toLowerCase().trim();}
+
+const questions={
+profile:"One word that feels like you?",
+birthday:"What age are you stepping into today?",
+capsule:"What helps you calm down when things feel heavy?",
+story:"Why do you stay, even when it’s hard?"
+};
+
+const answers={
+profile:["lovely","grounded","calm"],
+birthday:["22","twenty two","twentytwo"],
+capsule:["breathe","observe","music","silence","therapy"],
+story:["stay","love","care","connection"]
+};
+
+const hints={
+profile:"It’s something you are without trying.",
+birthday:"It’s a number, not a feeling.",
+capsule:"Think simple. Something you do without thinking.",
+story:"One word. The reason you don’t walk away."
+};
+
 function handleClick(key){
-  document.getElementById("content").textContent = sections[key];
+  const content=document.getElementById("content");
+  content.style.opacity=0;
+  setTimeout(()=>{
+    if(locks[key]){
+      const attempt=prompt(questions[key]);
+      if(attempt && answers[key].includes(norm(attempt))){
+        locks[key]=false;
+        content.textContent=sections[key];
+      }else{
+        content.textContent="🔒 Not yet Gundu.\n\nHint: "+hints[key];
+      }
+    }else{
+      content.textContent=sections[key];
+    }
+    content.style.opacity=1;
+  },300);
 }
 </script>
 
