@@ -6,106 +6,147 @@
 <title>For My Listener</title>
 
 <style>
-/* ===== BASE ===== */
 body{
   margin:0;
-  background:#07162f; /* solid navy */
+  background:#ffd6e5;
   color:white;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
 }
 
+/* container */
 .container{
-  max-width:900px;
+  max-width:800px;
   margin:0 auto;
-  padding:32px 16px;
+  padding:40px 16px;
   text-align:center;
+  animation:fadeIn 2.6s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(14px)}
+  to{opacity:1; transform:translateY(0)}
 }
 
 h1{
   font-weight:normal;
-  margin-bottom:12px;
+  letter-spacing:1px;
+  margin-bottom:14px;
+  font-size:1.6rem;
+  color:#5c1b2d;
 }
 
-/* ===== TREE ===== */
-.tree{
+/* ================= CAKE ================= */
+
+.cake-wrap{
+  margin:16px auto 22px;
+  width:140px;
   position:relative;
-  width:100%;
-  height:360px;
-  margin:0 auto 20px;
 }
 
-/* trunk */
-.trunk{
-  position:absolute;
-  bottom:0;
-  left:50%;
-  width:40px;
-  height:160px;
-  background:#6b4a2d;
-  transform:translateX(-50%);
-  border-radius:20px;
-}
-
-/* branches */
-.branch{
-  position:absolute;
-  bottom:120px;
-  width:14px;
-  height:110px;
-  background:#6b4a2d;
-  border-radius:10px;
-}
-
-.branch.left{ left:48%; transform:rotate(-30deg); }
-.branch.right{ left:52%; transform:rotate(30deg); }
-
-/* ===== HEARTS ===== */
-.heart{
-  position:absolute;
-  width:80px;
+.cake{
+  width:140px;
   height:70px;
-  transform:rotate(-45deg);
+  background:#f3e6cf; /* beige */
+  border-radius:0 0 14px 14px;
+  position:relative;
+  overflow:hidden;
 }
 
-.heart::before,
-.heart::after{
+.cake::before{
   content:"";
   position:absolute;
-  width:80px;
-  height:70px;
-  border-radius:50%;
-  background:inherit;
+  top:22px;
+  left:0;
+  width:100%;
+  height:16px;
+  background:#7fa7c9; /* blue layer */
 }
 
-.heart::before{ top:-35px; left:0; }
-.heart::after{ left:35px; top:0; }
-
-/* colors like reference image */
-.red{ background:#e63946; }
-.pink{ background:#ff7aa2; }
-.lightpink{ background:#ffd6e0; }
-.white{ background:#f5f5f5; }
-
-/* ===== BUTTON HEARTS ===== */
-.heart button{
+.cake::after{
+  content:"";
   position:absolute;
-  inset:0;
-  transform:rotate(45deg);
-  background:transparent;
-  border:1px solid rgba(255,255,255,.6);
-  color:white;
-  font-size:.8rem;
-  cursor:pointer;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:16px;
+  background:#6b1f36; /* maroon layer */
 }
 
-/* ===== CONTENT ===== */
+/* candle */
+.candle{
+  position:absolute;
+  top:-42px;
+  left:50%;
+  width:8px;
+  height:30px;
+  background:#000;
+  transform:translateX(-50%);
+  border-radius:4px;
+}
+
+/* flame */
+.flame{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  width:10px;
+  height:14px;
+  background:orange;
+  border-radius:50%;
+  transform:translateX(-50%);
+  animation:flicker .8s infinite alternate;
+}
+
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1);}
+  to{transform:translateX(-50%) scale(.85);}
+}
+
+.blown{
+  opacity:0;
+  transition:opacity .6s ease;
+}
+
+/* ================= BUTTONS ================= */
+
+button{
+  background:#6b1f36; /* maroon */
+  color:#ffeef3;
+  border:none;
+  padding:12px 18px;
+  margin:6px;
+  cursor:pointer;
+  font-size:0.95rem;
+  transition:all .35s ease;
+  animation:pulse 4.5s infinite ease-in-out;
+  border-radius:6px;
+}
+
+button:hover{
+  background:#812644;
+  letter-spacing:.5px;
+}
+
+button:active{
+  transform:scale(.96);
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(107,31,54,.25)}
+  60%{box-shadow:0 0 0 14px rgba(107,31,54,0)}
+  100%{box-shadow:0 0 0 0 rgba(107,31,54,0)}
+}
+
+/* content */
 #content{
   margin:36px auto 0;
-  max-width:650px;
-  text-align:left;
-  white-space:pre-wrap;
   line-height:1.7;
+  white-space:pre-wrap;
+  text-align:left;
+  max-width:650px;
+  font-size:0.95rem;
+  color:#4a1c2a;
 }
 
 #content:empty::before{
@@ -114,16 +155,21 @@ h1{
   font-style:italic;
 }
 
-/* ===== EMOJI POP (UNCHANGED) ===== */
-#pop{ position:fixed; inset:0; pointer-events:none; }
+/* emoji pop */
+#pop{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+
 .pop{
   position:absolute;
   opacity:0;
-  animation:fadePop 5s ease forwards;
+  animation:fadePop 5.2s ease forwards;
 }
 
 @keyframes fadePop{
-  0%{opacity:0;transform:scale(.4)}
+  0%{opacity:0;transform:scale(.3)}
   30%{opacity:.5;transform:scale(1)}
   100%{opacity:0;transform:scale(1.1)}
 }
@@ -137,48 +183,134 @@ h1{
 <div class="container">
   <h1>My only Listener❤️</h1>
 
-  <!-- TREE -->
-  <div class="tree">
-
-    <div class="trunk"></div>
-    <div class="branch left"></div>
-    <div class="branch right"></div>
-
-    <!-- decorative hearts -->
-    <div class="heart pink" style="top:20px; left:35%;"></div>
-    <div class="heart white" style="top:10px; left:50%;"></div>
-    <div class="heart lightpink" style="top:30px; left:62%;"></div>
-    <div class="heart red" style="top:70px; left:30%;"></div>
-    <div class="heart pink" style="top:90px; left:68%;"></div>
-
-    <!-- button hearts -->
-    <div class="heart red" style="top:110px; left:45%;">
-      <button onclick="handleClick('profile')">How I See You</button>
+  <!-- CAKE -->
+  <div class="cake-wrap">
+    <div class="cake">
+      <div class="candle">
+        <div class="flame" id="flame"></div>
+      </div>
     </div>
-
-    <div class="heart pink" style="top:150px; left:30%;">
-      <button onclick="handleClick('birthday')">22</button>
-    </div>
-
-    <div class="heart white" style="top:150px; left:60%;">
-      <button onclick="handleClick('capsule')">Capsule</button>
-    </div>
-
-    <div class="heart lightpink" style="top:200px; left:45%;">
-      <button onclick="handleClick('story')">Part Of You</button>
-    </div>
-
   </div>
+
+  <button onclick="handleClick('profile')">How I See You</button>
+  <button onclick="handleClick('birthday')">22</button>
+  <button onclick="handleClick('capsule')">Capsule</button>
+  <button onclick="handleClick('story')">Part Of You</button>
 
   <div id="content"></div>
 </div>
 
 <script>
-const sections={
-profile:`READING BETWEEN THE LINES...`,
-birthday:`HAPPY BIRTHDAY...`,
-capsule:`DO NOT READ TODAY`,
-story:`WORDS THAT FLOW WHEN THE TOPIC IS "YOU"`
+/* blow candle */
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("flame").classList.add("blown");
+  },3000);
+});
+
+const sections = {
+profile: `READING BETWEEN THE LINES
+
+
+I want to tell you how I see you, not the version you perform, but the one you live as.
+
+At your core, you are someone who values consistency, loyalty, growth, peace, and honesty.
+You don’t chase attention.
+You chase meaning.
+
+You’re not driven by noise or validation.
+You’re driven by the need to feel grounded, like what you’re doing makes sense.
+
+What drains you most isn’t work or effort.
+It’s feeling misunderstood.
+It’s having to explain yourself when you already chose your words carefully.
+
+You get tired when people assume instead of asking.
+When they overlook the thought you put into things.
+
+What makes you feel safe is simplicity.
+Clear intentions.
+Knowing where you stand with someone.
+
+You relax when you don’t have to perform or prove anything, when you’re allowed to just exist.
+
+You don’t love loudly.
+You love reliably.
+
+You show love by being present, by staying.
+You don’t always say everything you feel, but when you commit, it’s not shallow.
+
+One thing you underestimate about yourself is how grounding you are to others.
+You think it’s “nothing” when you listen, when you stay calm, when you don’t overreact.
+
+It’s not nothing.
+It’s rare.
+
+You carry responsibility naturally, not because you want praise, but because leaving things undone feels wrong to you.
+
+And I need you to know this:
+I don’t see you as someone who needs fixing or improving.
+I see you as someone who needs to be understood, and valued as is.
+
+This is how I see you.
+I assume you see yourself here too❤️❤️.`,
+
+birthday: `HAPPY BIRTHDAY BABYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+I’ve been thinking about how to say this in a way that feels true and not overdone, and I realized the simplest way is probably the most honest.
+
+I’m really grateful you were born.
+Not just because you exist in my life, but because of how you exist.
+
+The way you think.
+The way you notice things.
+The way you care quietly, without needing credit.
+
+You make the world feel a little steadier to me.
+
+I hope today you feel appreciated in ways that don’t require you to perform or be anything extra.
+You don’t need to impress anyone today.
+You don’t need to carry anything.
+You’re allowed to just be and be celebrated for that.
+
+I hope this year is gentle with you.
+I hope it brings you clarity where you’ve felt uncertain, and peace where you’ve been carrying too much in your head.
+
+I hope you grow not because you’re lacking, but because you’re curious and capable.
+
+You deserve good things.
+Not someday.
+Not after you “figure everything out.”
+But now.
+Exactly as you are.
+
+I want you to know that knowing you has been a gift for me.
+
+So today, I’m celebrating you.
+Your mind.
+Your heart.
+Your presence.
+
+Happy Birthday, love.💋`,
+
+capsule: `DO NOT READ TODAY
+
+This message is not for your birthday.
+sugar aapukomante!!!!!
+
+It’s for a day when things feel heavier than usual.
+Open this when you’re tired of being the strong one.
+When you’re questioning yourself.
+When things aren’t moving as fast as you hoped they would.
+
+You already matter right where you are.`,
+
+story: `WORDS THAT FLOW WHEN THE TOPIC IS "YOU"
+
+He wasn’t the kind of person who needed to fill every silence.
+He understood that some things were better left unspoken.
+
+That's enough to make him unforgettable forever❤️.`
 };
 
 const locks={profile:true,birthday:true,capsule:true,story:true};
@@ -206,19 +338,19 @@ story:"One word. The reason you don’t walk away."
 };
 
 function handleClick(key){
-  const c=document.getElementById("content");
-  c.style.opacity=0;
+  const content=document.getElementById("content");
+  content.style.opacity=0;
   setTimeout(()=>{
     if(locks[key]){
-      const a=prompt(questions[key]);
-      if(a && answers[key].includes(norm(a))){
+      const attempt=prompt(questions[key]);
+      if(attempt && answers[key].includes(norm(attempt))){
         locks[key]=false;
-        c.textContent=sections[key];
+        content.textContent=sections[key];
       }else{
-        c.textContent="🔒 Not yet Gundu.\n\nHint: "+hints[key];
+        content.textContent="🔒 Not yet Gundu.\n\nHint: "+hints[key];
       }
-    }else c.textContent=sections[key];
-    c.style.opacity=1;
+    }else content.textContent=sections[key];
+    content.style.opacity=1;
   },300);
 }
 
