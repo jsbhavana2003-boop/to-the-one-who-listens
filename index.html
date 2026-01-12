@@ -38,50 +38,53 @@ h1{
 /* ================= CAKE ================= */
 
 .cake-wrap{
-  margin:16px auto 22px;
-  width:140px;
+  margin:18px auto 34px; /* extra space so no overlap */
+  width:160px;
   position:relative;
 }
 
-.cake{
-  width:140px;
+/* bottom tier */
+.cake-bottom{
+  width:160px;
   height:70px;
-  background:#f3e6cf;
-  border-radius:0 0 14px 14px;
+  background:#f3e6cf; /* beige */
+  border-radius:0 0 16px 16px;
   position:relative;
 }
 
-.cake::before{
-  content:"";
-  position:absolute;
-  top:22px;
-  left:0;
-  width:100%;
-  height:16px;
-  background:#7fa7c9;
-}
-
-.cake::after{
+.cake-bottom::after{
   content:"";
   position:absolute;
   bottom:0;
   left:0;
   width:100%;
-  height:16px;
-  background:#6b1f36;
+  height:18px;
+  background:#6b1f36; /* maroon */
+}
+
+/* top tier */
+.cake-top{
+  width:110px;
+  height:55px;
+  background:#7fa7c9; /* blue */
+  border-radius:16px 16px 0 0;
+  position:absolute;
+  top:-55px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 /* candle */
 .candle{
   position:absolute;
-  top:-38px;
+  top:-32px;
   left:50%;
   width:8px;
-  height:30px;
+  height:28px;
   background:#000;
   transform:translateX(-50%);
   border-radius:4px;
-  z-index:5;
+  z-index:3;
 }
 
 /* flame */
@@ -184,13 +187,14 @@ button:active{
 <div class="container">
   <h1>My only Listener❤️</h1>
 
-  <!-- CAKE -->
+  <!-- TWO-TIER CAKE -->
   <div class="cake-wrap">
-    <div class="cake">
+    <div class="cake-top">
       <div class="candle">
         <div class="flame" id="flame"></div>
       </div>
     </div>
+    <div class="cake-bottom"></div>
   </div>
 
   <button onclick="handleClick('profile')">How I See You</button>
@@ -202,7 +206,7 @@ button:active{
 </div>
 
 <script>
-/* blow candle automatically */
+/* blow candle */
 window.addEventListener("load",()=>{
   setTimeout(()=>{
     document.getElementById("flame").classList.add("blown");
@@ -258,58 +262,16 @@ I assume you see yourself here too❤️❤️.`,
 
 birthday: `HAPPY BIRTHDAY BABYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
-I’ve been thinking about how to say this in a way that feels true and not overdone, and I realized the simplest way is probably the most honest.
-
 I’m really grateful you were born.
-Not just because you exist in my life, but because of how you exist.
-
-The way you think.
-The way you notice things.
-The way you care quietly, without needing credit.
-
-You make the world feel a little steadier to me.
-
-I hope today you feel appreciated in ways that don’t require you to perform or be anything extra.
-You don’t need to impress anyone today.
-You don’t need to carry anything.
-You’re allowed to just be and be celebrated for that.
-
-I hope this year is gentle with you.
-I hope it brings you clarity where you’ve felt uncertain, and peace where you’ve been carrying too much in your head.
-
-I hope you grow not because you’re lacking, but because you’re curious and capable.
-
-You deserve good things.
-Not someday.
-Not after you “figure everything out.”
-But now.
-Exactly as you are.
-
-I want you to know that knowing you has been a gift for me.
-
-So today, I’m celebrating you.
-Your mind.
-Your heart.
-Your presence.
 
 Happy Birthday, love.💋`,
 
 capsule: `DO NOT READ TODAY
 
 This message is not for your birthday.
-sugar aapukomante!!!!!
-
-It’s for a day when things feel heavier than usual.
-Open this when you’re tired of being the strong one.
-When you’re questioning yourself.
-When things aren’t moving as fast as you hoped they would.
-
-You already matter right where you are.`,
+sugar aapukomante!!!!!`,
 
 story: `WORDS THAT FLOW WHEN THE TOPIC IS "YOU"
-
-He wasn’t the kind of person who needed to fill every silence.
-He understood that some things were better left unspoken.
 
 That's enough to make him unforgettable forever❤️.`
 };
