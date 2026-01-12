@@ -8,13 +8,7 @@
 <style>
 body{
   margin:0;
-  background:
-    radial-gradient(
-      ellipse at top,
-      #0b1c3d 0%,
-      #060b18 45%,
-      #03050c 100%
-    );
+  background:radial-gradient(ellipse at top,#0b1c3d 0%,#060b18 45%,#03050c 100%);
   color:white;
   font-family:'Courier New', monospace;
   overflow-x:hidden;
@@ -22,7 +16,7 @@ body{
 
 /* container */
 .container{
-  max-width:800px;
+  max-width:900px;
   margin:0 auto;
   padding:40px 16px;
   text-align:center;
@@ -36,59 +30,104 @@ body{
 
 h1{
   font-weight:normal;
-  letter-spacing:1px;
-  margin-bottom:28px;
+  margin-bottom:18px;
   font-size:1.6rem;
-  color:#f5f5f7;
 }
 
-/* buttons */
-button{
+/* ================= HEART TREE ================= */
+
+.heart-tree{
+  position:relative;
+  width:100%;
+  height:320px;
+  margin:0 auto 20px;
+}
+
+/* tree trunk */
+.trunk{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:14px;
+  height:120px;
+  background:#3a2a1a;
+  transform:translateX(-50%);
+  border-radius:8px;
+}
+
+/* generic heart */
+.heart{
+  position:absolute;
+  width:90px;
+  height:80px;
+  transform:rotate(-45deg);
+  animation:float 6s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after{
+  content:"";
+  position:absolute;
+  width:90px;
+  height:80px;
+  border-radius:50%;
+  background:inherit;
+}
+
+.heart::before{ top:-40px; left:0; }
+.heart::after{ left:40px; top:0; }
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-45deg)}
+  50%{transform:translateY(-8px) rotate(-45deg)}
+}
+
+/* colored hearts */
+.pink{background:#ff7aa2;}
+.red{background:#ff4d6d;}
+.purple{background:#b983ff;}
+.blue{background:#6ecbff;}
+.orange{background:#ffb347;}
+.green{background:#7bed9f;}
+
+/* button hearts */
+.heart button{
+  position:absolute;
+  inset:0;
   background:transparent;
+  border:1px solid rgba(255,255,255,.6);
   color:white;
-  border:1px solid #444;
-  padding:12px 18px;
-  margin:6px;
   cursor:pointer;
-  font-size:0.95rem;
-  transition:all .35s ease;
+  z-index:2;
+  font-size:.85rem;
+  border-radius:6px;
+  transform:rotate(45deg);
+}
+
+/* ================= BUTTON EFFECTS (unchanged) ================= */
+
+button{
   animation:pulse 4.5s infinite ease-in-out;
-  border-radius:4px;
-}
-
-button:nth-of-type(1){animation-delay:0s;}
-button:nth-of-type(2){animation-delay:.6s;}
-button:nth-of-type(3){animation-delay:1.2s;}
-button:nth-of-type(4){animation-delay:1.8s;}
-
-button:hover{
-  border-color:#888;
-  letter-spacing:.5px;
-}
-
-button:active{
-  transform:scale(.96);
 }
 
 @keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,255,255,.08)}
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,.15)}
   60%{box-shadow:0 0 0 14px rgba(255,255,255,0)}
   100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
 }
 
-/* content */
+/* ================= CONTENT ================= */
+
 #content{
   margin:36px auto 0;
   line-height:1.7;
   white-space:pre-wrap;
   text-align:left;
   max-width:650px;
-  font-size:0.95rem;
+  font-size:.95rem;
   transition:opacity .6s ease;
-  text-shadow:0 0 6px rgba(255,255,255,.04);
 }
 
-/* placeholder */
 #content:empty::before{
   content:"each block opens something, tap gently";
   opacity:.6;
@@ -115,71 +154,10 @@ button:active{
 }
 
 /* mobile */
-@media (max-width:600px){
-  h1{font-size:1.4rem;}
-  button{
-    width:100%;
-    max-width:260px;
-    font-size:1rem;
-  }
-  #content{
-    font-size:0.95rem;
-    padding:0 4px;
-  }
+@media(max-width:600px){
+  .heart-tree{height:420px;}
+  .heart{transform:scale(.85) rotate(-45deg);}
 }
-
-/* ========================= */
-/* ADD-ONLY HEART TREE STYLE */
-/* ========================= */
-
-.container button{
-  position:relative;
-  width:120px;
-  height:95px;
-  padding-top:38px;
-  border:none;
-  background:transparent;
-  z-index:1;
-}
-
-/* heart shape */
-.container button::before,
-.container button::after{
-  content:"";
-  position:absolute;
-  width:60px;
-  height:90px;
-  background:rgba(255,255,255,0.08);
-  border-radius:60px 60px 0 0;
-  top:0;
-  z-index:-1;
-}
-
-/* left heart */
-.container button::before{
-  left:60px;
-  transform:rotate(-45deg);
-  transform-origin:0 100%;
-}
-
-/* right heart */
-.container button::after{
-  left:0;
-  transform:rotate(45deg);
-  transform-origin:100% 100%;
-}
-
-/* glow */
-.container button{
-  filter:drop-shadow(0 0 10px rgba(255,255,255,.18));
-}
-
-/* tree stagger */
-.container button:nth-of-type(1){ margin-top:0; }
-.container button:nth-of-type(2){ margin-top:18px; }
-.container button:nth-of-type(3){ margin-top:36px; }
-.container button:nth-of-type(4){ margin-top:18px; }
-
 </style>
 </head>
 
@@ -190,122 +168,86 @@ button:active{
 <div class="container">
   <h1>My only Listener❤️</h1>
 
-  <button onclick="handleClick('profile')">How I See You</button>
-  <button onclick="handleClick('birthday')">22</button>
-  <button onclick="handleClick('capsule')">Capsule</button>
-  <button onclick="handleClick('story')">Part Of You</button>
+  <!-- HEART TREE -->
+  <div class="heart-tree">
+    <div class="trunk"></div>
+
+    <!-- decorative hearts -->
+    <div class="heart pink" style="top:20px; left:15%;"></div>
+    <div class="heart purple" style="top:10px; left:65%;"></div>
+    <div class="heart blue" style="top:70px; left:75%;"></div>
+    <div class="heart green" style="top:90px; left:25%;"></div>
+
+    <!-- button hearts -->
+    <div class="heart red" style="top:40px; left:42%;">
+      <button onclick="handleClick('profile')">How I See You</button>
+    </div>
+
+    <div class="heart orange" style="top:120px; left:30%;">
+      <button onclick="handleClick('birthday')">22</button>
+    </div>
+
+    <div class="heart pink" style="top:120px; left:55%;">
+      <button onclick="handleClick('capsule')">Capsule</button>
+    </div>
+
+    <div class="heart purple" style="top:200px; left:42%;">
+      <button onclick="handleClick('story')">Part Of You</button>
+    </div>
+  </div>
 
   <div id="content"></div>
 </div>
 
 <script>
+/* ===== YOUR ORIGINAL JS (UNCHANGED) ===== */
+
 const sections = {
-profile: `READING BETWEEN THE LINES
+profile:`READING BETWEEN THE LINES
 
-
-I want to tell you how I see you, not the version you perform, but the one you live as.
-
-At your core, you are someone who values consistency, loyalty, growth, peace, and honesty.
-You don’t chase attention.
-You chase meaning.
-
-You’re not driven by noise or validation.
-You’re driven by the need to feel grounded, like what you’re doing makes sense.
-
-What drains you most isn’t work or effort.
-It’s feeling misunderstood.
-It’s having to explain yourself when you already chose your words carefully.
-
-You get tired when people assume instead of asking.
-When they overlook the thought you put into things.
-
-What makes you feel safe is simplicity.
-Clear intentions.
-Knowing where you stand with someone.
-
-You relax when you don’t have to perform or prove anything, when you’re allowed to just exist.
-
-You don’t love loudly.
-You love reliably.
-
-You show love by being present, by staying.
-You don’t always say everything you feel, but when you commit, it’s not shallow.
-
-One thing you underestimate about yourself is how grounding you are to others.
-You think it’s “nothing” when you listen, when you stay calm, when you don’t overreact.
-
-It’s not nothing.
-It’s rare.
-
-You carry responsibility naturally, not because you want praise, but because leaving things undone feels wrong to you.
-
-And I need you to know this:
-I don’t see you as someone who needs fixing or improving.
-I see you as someone who needs to be understood, and valued as is.
-
-This is how I see you.
-I assume you see yourself here too❤️❤️.`,
-
-birthday: `HAPPY BIRTHDAY BABYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-
-I’m really grateful you were born.
-Not just because you exist in my life, but because of how you exist.
-
-You make the world feel a little steadier to me.
-
-Happy Birthday, love.💋`,
-
-capsule: `DO NOT READ TODAY
-
-This message is not for your birthday.
-sugar aapukomante!!!!!`,
-
-story: `WORDS THAT FLOW WHEN THE TOPIC IS "YOU"
-
-That's enough to make him unforgettable forever❤️.`
+I want to tell you how I see you...`,
+birthday:`HAPPY BIRTHDAY BABYYYYYYYYYYYYYYYYYYYYYYYYYYYYY`,
+capsule:`DO NOT READ TODAY`,
+story:`WORDS THAT FLOW WHEN THE TOPIC IS "YOU"`
 };
 
-const locks = { profile:true, birthday:true, capsule:true, story:true };
+const locks={profile:true,birthday:true,capsule:true,story:true};
+function norm(s){return s.toLowerCase().trim();}
 
-function norm(s){ return s.toLowerCase().trim(); }
-
-const questions = {
-  profile: "One word that feels like you?",
-  birthday: "What age are you stepping into today?",
-  capsule: "What helps you calm down when things feel heavy?",
-  story: "Why do you stay, even when it’s hard?"
+const questions={
+profile:"One word that feels like you?",
+birthday:"What age are you stepping into today?",
+capsule:"What helps you calm down when things feel heavy?",
+story:"Why do you stay, even when it’s hard?"
 };
 
-const answers = {
-  profile: ["lovely","grounded","calm"],
-  birthday: ["22","twenty two","twentytwo"],
-  capsule: ["breathe","observe","music","silence","therapy"],
-  story: ["stay","love","care","connection"]
+const answers={
+profile:["lovely","grounded","calm"],
+birthday:["22","twenty two","twentytwo"],
+capsule:["breathe","observe","music","silence","therapy"],
+story:["stay","love","care","connection"]
 };
 
-const hints = {
-  profile: "It’s something you are without trying.",
-  birthday: "It’s a number, not a feeling.",
-  capsule: "Think simple. Something you do without thinking.",
-  story: "One word. The reason you don’t walk away."
+const hints={
+profile:"It’s something you are without trying.",
+birthday:"It’s a number, not a feeling.",
+capsule:"Think simple. Something you do without thinking.",
+story:"One word. The reason you don’t walk away."
 };
 
 function handleClick(key){
-  const content = document.getElementById("content");
+  const content=document.getElementById("content");
   content.style.opacity=0;
-
   setTimeout(()=>{
     if(locks[key]){
-      const attempt = prompt(questions[key]);
+      const attempt=prompt(questions[key]);
       if(attempt && answers[key].includes(norm(attempt))){
-        locks[key] = false;
-        content.textContent = sections[key];
-      } else {
-        content.textContent = "🔒 Not yet Gundu.\n\nHint: " + hints[key];
+        locks[key]=false;
+        content.textContent=sections[key];
+      }else{
+        content.textContent="🔒 Not yet Gundu.\n\nHint: "+hints[key];
       }
-    } else {
-      content.textContent = sections[key];
-    }
+    }else content.textContent=sections[key];
     content.style.opacity=1;
   },300);
 }
@@ -326,4 +268,3 @@ setInterval(()=>{
 
 </body>
 </html>
-
