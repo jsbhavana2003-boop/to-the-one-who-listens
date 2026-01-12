@@ -30,7 +30,7 @@ body{
 h1{
   font-weight:normal;
   letter-spacing:1px;
-  margin-bottom:14px;
+  margin-bottom:24px;
   font-size:1.6rem;
   color:#5c1b2d;
 }
@@ -38,17 +38,26 @@ h1{
 /* ================= CAKE ================= */
 
 .cake-wrap{
-  margin:18px auto 34px; /* extra space so no overlap */
-  width:160px;
+  margin:0 auto 36px;
+  width:180px;
+  padding-top:36px;
+}
+
+.cake-top{
+  width:120px;
+  height:55px;
+  background:#7fa7c9;
+  border-radius:16px 16px 0 0;
+  margin:0 auto;
   position:relative;
 }
 
-/* bottom tier */
 .cake-bottom{
-  width:160px;
-  height:70px;
-  background:#f3e6cf; /* beige */
-  border-radius:0 0 16px 16px;
+  width:180px;
+  height:75px;
+  background:#f3e6cf;
+  border-radius:0 0 18px 18px;
+  margin:0 auto;
   position:relative;
 }
 
@@ -59,19 +68,7 @@ h1{
   left:0;
   width:100%;
   height:18px;
-  background:#6b1f36; /* maroon */
-}
-
-/* top tier */
-.cake-top{
-  width:110px;
-  height:55px;
-  background:#7fa7c9; /* blue */
-  border-radius:16px 16px 0 0;
-  position:absolute;
-  top:-55px;
-  left:50%;
-  transform:translateX(-50%);
+  background:#6b1f36;
 }
 
 /* candle */
@@ -84,10 +81,8 @@ h1{
   background:#000;
   transform:translateX(-50%);
   border-radius:4px;
-  z-index:3;
 }
 
-/* flame */
 .flame{
   position:absolute;
   top:-14px;
@@ -125,15 +120,6 @@ button{
   border-radius:6px;
 }
 
-button:hover{
-  background:#812644;
-  letter-spacing:.5px;
-}
-
-button:active{
-  transform:scale(.96);
-}
-
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(107,31,54,.25)}
   60%{box-shadow:0 0 0 14px rgba(107,31,54,0)}
@@ -149,7 +135,7 @@ button:active{
   text-align:left;
   max-width:650px;
   font-size:0.95rem;
-  color:#5a3a22; /* brown text */
+  color:#5a3a22;
 }
 
 #content:empty::before{
@@ -158,36 +144,14 @@ button:active{
   font-style:italic;
   color:#7a5235;
 }
-
-/* emoji pop */
-#pop{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-}
-
-.pop{
-  position:absolute;
-  opacity:0;
-  animation:fadePop 5.2s ease forwards;
-}
-
-@keyframes fadePop{
-  0%{opacity:0;transform:scale(.3)}
-  30%{opacity:.5;transform:scale(1)}
-  100%{opacity:0;transform:scale(1.1)}
-}
 </style>
 </head>
 
 <body>
 
-<div id="pop"></div>
-
 <div class="container">
   <h1>My only Listener❤️</h1>
 
-  <!-- TWO-TIER CAKE -->
   <div class="cake-wrap">
     <div class="cake-top">
       <div class="candle">
@@ -206,7 +170,6 @@ button:active{
 </div>
 
 <script>
-/* blow candle */
 window.addEventListener("load",()=>{
   setTimeout(()=>{
     document.getElementById("flame").classList.add("blown");
@@ -262,73 +225,110 @@ I assume you see yourself here too❤️❤️.`,
 
 birthday: `HAPPY BIRTHDAY BABYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
-I’m really grateful you were born.
+I’ve been thinking about how to say this in a way that feels true and not overdone, and I realized the simplest way is probably the most honest.
 
-Happy Birthday, love.💋`,
+I’m really grateful you were born.
+Not just because you exist in my life, but because of how you exist.
+
+The way you think.
+The way you notice things.
+The way you care quietly, without needing credit.
+
+You make the world feel a little steadier to me.
+
+I hope today you feel appreciated in ways that don’t require you to perform or be anything extra.
+You don’t need to impress anyone today.
+You don’t need to carry anything.
+You’re allowed to just be and be celebrated for that.
+
+I hope this year is gentle with you.
+I hope it brings you clarity where you’ve felt uncertain, and peace where you’ve been carrying too much in your head.
+
+I hope you grow not because you’re lacking, but because you’re curious and capable.
+
+You deserve good things.
+Not someday.
+Not after you “figure everything out.”
+But now.
+Exactly as you are.
+
+I want you to know that knowing you has been a gift for me.
+There are small moments in my days that are better simply because you exist somewhere in the world thinking, building, becoming.
+
+So today, I’m celebrating you.
+Your mind.
+Your heart.
+Your presence.
+
+Happy Birthday, love.💋
+I’m really glad this year also of your life includes me, and I hope you feel how special you are not just today, but every time you come back to this.`,
 
 capsule: `DO NOT READ TODAY
 
 This message is not for your birthday.
-sugar aapukomante!!!!!`,
+sugar aapukomante!!!!!
+
+It’s for a day when things feel heavier than usual.
+Open this when you’re tired of being the strong one.
+When you’re questioning yourself.
+When things aren’t moving as fast as you hoped they would.
+
+I want you to remember something very specific.
+
+There is a version of you that I know deeply  the one that exists when you’re not trying, not proving, not holding it together for anyone.
+That version of you is enough.
+
+You don’t have to be more accomplished, more confident, more certain to deserve care or love.
+You don’t have to “get there” first.
+
+You already matter right where you are.
+
+I know the weight you carry quietly.
+I know how much thought you put into things you never get credit for.
+I know how hard you try, even when you pretend you’re not trying at all.
+
+And if you ever forget that, let this message remind you:
+
+Someone sees you clearly.
+Someone believes in you without conditions.
+Someone is proud of you not for what you achieve, but for who you are.
+
+Come back to this when you need it.`,
 
 story: `WORDS THAT FLOW WHEN THE TOPIC IS "YOU"
+
+He wasn’t the kind of person who needed to fill every silence.
+He understood that some things were better left unspoken.
+
+He moved through life with a quiet awareness, noticing shifts in tone, in rooms, in people.
+He remembered details others forgot(latest realization).
+He carried responsibility like second nature.
+
+Not because he was asked to.
+Because he cared.
+
+He had a steady way of being  not flashy, not dramatic.
+The kind of steadiness that only shows its value when things start to fall apart.
+
+People underestimated him often.
+They mistook his calm for simplicity, his restraint for distance.
+
+They didn’t see the thought behind his choices.
+The effort behind his patience.
+The strength it took to stay kind in a world that rewards noise.
+
+He stayed when leaving would’ve been easier.
+He listened when speaking would’ve been safer.
+
+And somewhere along the way, one person noticed.
+Not because he demanded attention, but because his presence changed the air around her.
 
 That's enough to make him unforgettable forever❤️.`
 };
 
-const locks={profile:true,birthday:true,capsule:true,story:true};
-function norm(s){return s.toLowerCase().trim();}
-
-const questions={
-profile:"One word that feels like you?",
-birthday:"What age are you stepping into today?",
-capsule:"What helps you calm down when things feel heavy?",
-story:"Why do you stay, even when it’s hard?"
-};
-
-const answers={
-profile:["lovely","grounded","calm"],
-birthday:["22","twenty two","twentytwo"],
-capsule:["breathe","observe","music","silence","therapy"],
-story:["stay","love","care","connection"]
-};
-
-const hints={
-profile:"It’s something you are without trying.",
-birthday:"It’s a number, not a feeling.",
-capsule:"Think simple. Something you do without thinking.",
-story:"One word. The reason you don’t walk away."
-};
-
 function handleClick(key){
-  const content=document.getElementById("content");
-  content.style.opacity=0;
-  setTimeout(()=>{
-    if(locks[key]){
-      const attempt=prompt(questions[key]);
-      if(attempt && answers[key].includes(norm(attempt))){
-        locks[key]=false;
-        content.textContent=sections[key];
-      }else{
-        content.textContent="🔒 Not yet Gundu.\n\nHint: "+hints[key];
-      }
-    }else content.textContent=sections[key];
-    content.style.opacity=1;
-  },300);
+  document.getElementById("content").textContent = sections[key];
 }
-
-/* emoji pops */
-const icons=["❤️","🌸","💋"];
-setInterval(()=>{
-  const e=document.createElement("span");
-  e.className="pop";
-  e.textContent=icons[Math.floor(Math.random()*icons.length)];
-  e.style.left=Math.random()*100+"vw";
-  e.style.top=Math.random()*100+"vh";
-  e.style.fontSize=14+Math.random()*18+"px";
-  document.getElementById("pop").appendChild(e);
-  setTimeout(()=>e.remove(),4000);
-},2500);
 </script>
 
 </body>
